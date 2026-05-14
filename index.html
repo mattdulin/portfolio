@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Communications & Marketing Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,300;1,400&family=Libre+Franklin:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Libre Franklin', sans-serif;
+      background: #f4f2ee;
+      color: #17150e;
+      min-height: 100vh;
+      padding: 56px 32px 80px;
+    }
+
+    .portfolio {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .header {
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 0.5px solid #ddd9d1;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9a9188;
+      margin: 0 0 8px;
+      font-weight: 400;
+    }
+
+    .headline {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(22px, 4vw, 28px);
+      font-weight: 400;
+      color: #17150e;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 13px;
+      color: #4b4640;
+      line-height: 1.65;
+      max-width: 520px;
+      margin: 0;
+      font-weight: 300;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
+      gap: 8px;
+    }
+
+    .card {
+      border-radius: 12px;
+      border: 0.5px solid #ddd9d1;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+      transition: background 0.15s ease;
+      animation: fadeUp 0.35s ease backwards;
+    }
+
+    .card:hover {
+      background: #f0f4f9;
+    }
+
+    .card-thumb {
+      height: 155px;
+      background: #e8e4dc;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .card-body {
+      padding: 0.875rem 1.125rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      flex: 1;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #9a9188;
+      font-weight: 400;
+    }
+
+    .card-title {
+      font-family: 'Merriweather', serif;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.35;
+      color: #17150e;
+      flex: 1;
+      transition: color 0.15s ease;
+    }
+
+    .card:hover .card-title {
+      color: #185fa5;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 10px;
+      border-top: 0.5px solid #ddd9d1;
+      margin-top: auto;
+    }
+
+    .card-role {
+      font-size: 11px;
+      color: #4b4640;
+      font-weight: 300;
+    }
+
+    .card-note {
+      font-size: 11px;
+      color: #9a9188;
+      font-style: italic;
+      margin: 3px 0 0;
+    }
+
+    .card-arrow {
+      font-size: 16px;
+      color: #185fa5;
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+
+    .card:hover .card-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 36px 16px 60px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="portfolio">
+    <header class="header">
+      <p class="eyebrow">Communications &amp; Marketing</p>
+      <h1 class="headline">Selected works</h1>
+      <p class="subhead">Writing, research communication, editorial work, and campaign development across journalism and higher education.</p>
+    </header>
+    <main class="grid" id="grid"></main>
+  </div>
+
+  <script>
+    const items = [
+      {
+        cat: 'Original reporting & research',
+        title: 'Houston\u2019s untapped powerhouse: Rooftop solar',
+        role: 'Writer \xb7 Data analysis',
+        url: 'https://kinder.rice.edu/urbanedge/houstons-untapped-powerhouse-rooftop-solar',
+        img: 'https://kinder.rice.edu/sites/g/files/bxs4896/files/images/jeremy-bezanger-k8HniqcdYS4-unsplash.jpg'
+      },
+      {
+        cat: 'Original reporting & research',
+        title: 'From rainfall totals to oral histories, Hurricane Harvey data offers multiple portraits of a disaster',
+        role: 'Writer \xb7 Data visualization',
+        url: 'https://kinder.rice.edu/urbanedge/hurricane-harvey-data',
+        img: 'https://kinder.rice.edu/sites/g/files/bxs4896/files/2022-09/harvey_data_three_0.jpg'
+      },
+      {
+        cat: 'Original reporting & research',
+        title: 'After 20 years, the center of Harris County\u2019s population has moved outside the Loop',
+        role: 'Writer \xb7 Data analysis',
+        url: 'https://kinder.rice.edu/urbanedge/after-20-years-center-harris-countys-population-has-moved-outside-loop',
+        img: 'https://kinder.rice.edu/sites/g/files/bxs4896/files/images/AdobeStock_168516723.jpg'
+      },
+      {
+        cat: 'Thought leadership',
+        title: 'Bilingualism is a strength Texas is failing to nurture for hundreds of thousands of students',
+        role: 'Ghost writer \xb7 Editor',
+        url: 'https://kinder.rice.edu/urbanedge/bilingualism-strength-texas-failing-nurture-students',
+        img: 'https://kinder.rice.edu/sites/g/files/bxs4896/files/2024-12/cdc-GDokEYnOfnE-unsplash.jpg'
+      },
+      {
+        cat: 'Research product',
+        title: 'Kinder Houston Area Survey 2024',
+        role: 'Lead editor \xb7 Contributing author',
+        url: 'https://rice.app.box.com/s/vuohz9pu4djyev33d24h0e4z5qc2cn20',
+        img: 'https://kinder.rice.edu/sites/g/files/bxs4896/files/2024-04/KHAS%202024%20report%20cover.jpg'
+      },
+      {
+        cat: 'Research product',
+        title: 'Asian American Community Study: One-pager briefing',
+        role: 'Writer \xb7 Research communication',
+        url: 'https://rice.app.box.com/s/dzyp7pqtziaff7bhnp7ezhi0slhsa88n',
+        img: 'https://kinder.rice.edu/sites/g/files/bxs4896/files/2025-12/Asian%20American%20Community%20Study%20%281%29.jpg'
+      },
+      {
+        cat: 'Marketing campaign',
+        title: 'Missouri Progress Awards',
+        role: 'Campaign development \xb7 Copywriting',
+        note: 'Sample available upon request',
+        url: 'https://docs.google.com/document/d/e/2PACX-1vSdyCkDZN5QIDjPKFCLzefJDYlqA7oKCWE1Z4WxWwiJQltvrQK7-G-SHFQDeiwUaOYfHcWoVHhipWK2/pub',
+        img: null
+      },
+      {
+        cat: 'Annual report & collateral',
+        title: 'Annual report & supporting collateral',
+        role: 'Editor \xb7 Creative production',
+        url: 'https://rice.app.box.com/s/6wmcqq7l7zz8evqk5luqm5m9rrjh43jk',
+        img: 'https://kinder.rice.edu/sites/g/files/bxs4896/files/2022-07/2100722_Downtown%20Houston%20Drone_Martin%2012.jpeg'
+      }
+    ];
+
+    const grid = document.getElementById('grid');
+
+    items.forEach((item, i) => {
+      const a = document.createElement('a');
+      a.className = 'card';
+      a.href = item.url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.style.animationDelay = (i * 0.055) + 's';
+
+      const thumb = item.img
+        ? `<div class="card-thumb"><img src="${item.img}" alt="" loading="lazy"></div>`
+        : `<div class="card-thumb"></div>`;
+
+      a.innerHTML = `
+        ${thumb}
+        <div class="card-body">
+          <span class="card-tag">${item.cat}</span>
+          <p class="card-title">${item.title}</p>
+          <div class="card-meta">
+            <div>
+              <span class="card-role">${item.role}</span>
+              ${item.note ? `<p class="card-note">${item.note}</p>` : ''}
+            </div>
+            <i class="ti ti-external-link card-arrow" aria-hidden="true"></i>
+          </div>
+        </div>`;
+
+      grid.appendChild(a);
+    });
+  </script>
+</body>
+</html>
